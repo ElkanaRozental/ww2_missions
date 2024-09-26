@@ -33,16 +33,16 @@ def get_mission(m_id: int):
 def get_all():
     return (
         find_all_missions()
-        .map(lambda users: [convert_to_json(user) for user in users])
+        .map(lambda missions: [convert_to_json(mission) for mission in missions])
         .map(lambda u: (jsonify(u), 200))
         .value_or((jsonify({}), 404))
     )
 
 
 @mission_blueprint.route("/delete/<int:u_id>", methods=['DELETE'])
-def delete(u_id):
+def delete(m_id):
     return (
-        delete_mission(u_id)
+        delete_mission(m_id)
         .map(convert_to_json)
         .map(lambda u: (jsonify(u), 204))
         .value_or((jsonify({}), 404))
@@ -50,10 +50,10 @@ def delete(u_id):
 
 
 @mission_blueprint.route("/update/<int:u_id>", methods=['PUT'])
-def update(u_id):
-    user = convert_to_mission(request.json)
+def update(m_id):
+    mission = convert_to_mission(request.json)
     return (
-        update_mission(u_id, user.unwrap())
+        update_mission(m_id, mission.unwrap())
         .map(convert_to_json)
         .map(lambda u: (jsonify(u), 204))
         .value_or((jsonify({}), 404))
