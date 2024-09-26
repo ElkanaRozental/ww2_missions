@@ -1,0 +1,16 @@
+
+Here is the translation of your text into English:
+
+Query 1: Without index: Results: Execution Time: 117.853 ms
+
+With hash index on date, air_force: Execution Time: 71.424 ms
+
+Since it’s a comparison, I chose to use a hash index, which works like a dictionary and significantly speeds up the search process.
+
+Query 2: Results: Planning Time: 0.741 ms Execution Time: 51.665 ms
+
+With an index on bomb_damage_assessment: Planning Time: 1.298 ms Execution Time: 0.222 ms
+
+With an index on airborne_aircraft: Planning Time: 2.015 ms Execution Time: 12.331 ms
+
+Since it’s data filtering, I used the default index, which generates a binary tree that is highly beneficial for filtering searches.
