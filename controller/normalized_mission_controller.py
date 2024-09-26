@@ -1,8 +1,9 @@
 from flask import Blueprint, request, jsonify
 from repository.normalized_mission_repository import (
-    insert_mission, find_mission_by_id, find_all_missions, delete_mission, update_missin
+    insert_mission, find_mission_by_id, find_all_missions, delete_mission, update_mission
 )
-from service.user_service import convert_to_user, convert_to_json
+
+from service.normalized_mission_service import convert_to_mission, convert_to_json
 
 mission_blueprint = Blueprint("mission", __name__)
 
@@ -50,9 +51,9 @@ def delete(u_id):
 
 @mission_blueprint.route("/update/<int:u_id>", methods=['PUT'])
 def update(u_id):
-    user = convert_to_user(request.json)
+    user = convert_to_mission(request.json)
     return (
-        update_missin(u_id, user.unwrap())
+        update_mission(u_id, user.unwrap())
         .map(convert_to_json)
         .map(lambda u: (jsonify(u), 204))
         .value_or((jsonify({}), 404))
