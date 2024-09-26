@@ -10,8 +10,7 @@ class Location(Base):
     latitude = Column(DECIMAL, nullable=False)
     longitude = Column(DECIMAL, nullable=False)
     missions = relationship(
-        "Mission",
-        secondary="normalized_mission",
+        "NormalizedMission",
         back_populates="location",
         cascade="all, delete-orphan"
     )

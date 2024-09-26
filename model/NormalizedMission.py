@@ -5,10 +5,10 @@ from config.base import Base
 
 
 class NormalizedMission(Base):
-    __tablename__ = "target_type"
+    __tablename__ = "normalized_mission"
     id = Column(Integer, primary_key=True, autoincrement=True)
-    country_id = Column(Integer,ForeignKey("countries.id"), nullable=False)
-    city_id = Column(Integer,ForeignKey("cities.id"), nullable=False)
+    country_id = Column(Integer, ForeignKey("countries.id"), nullable=False)
+    city_id = Column(Integer, ForeignKey("cities.id"), nullable=False)
     location_id = Column(Integer, ForeignKey("locations.id"), nullable=False)
     target_type_id = Column(Integer, ForeignKey("target_type.id"), nullable=False)
     target_industry_id = Column(Integer, ForeignKey("target_industry.id"), nullable=False)

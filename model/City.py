@@ -9,8 +9,7 @@ class City(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)
     missions = relationship(
-        "Mission",
-        secondary="normalized_mission",
+        "NormalizedMission",
         back_populates="city",
         cascade="all, delete-orphan"
     )

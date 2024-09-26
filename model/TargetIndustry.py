@@ -9,8 +9,7 @@ class TargetIndustry(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     industry = Column(String(400), nullable=False)
     missions = relationship(
-        "Mission",
-        secondary="normalized_mission",
+        "NormalizedMission",
         back_populates="industry",
         cascade="all, delete-orphan"
     )
