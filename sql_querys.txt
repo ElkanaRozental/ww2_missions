@@ -8,18 +8,12 @@ order by mission_count desc
 limit 1
 
 תוצאות:
+Execution Time: 117.853 ms
 
-Planning Time: 0.077 ms
-Execution Time: 50.853 ms
+עם  hash index על ה date, air_force:
+Execution Time: 71.424 ms
 
-עם index על התאריך:
-Planning Time: 1.384 ms
-Execution Time: 53.512 ms
-
-עם index על הair_force:
-Planning Time: 1.053 ms
-Execution Time: 47.007 ms
-
+בגלל שמדובר בהשוואה בחרתי להשתמש בhash שעובד כמו dictionary מה שמזרז את תהליך החיפוש משמעותית
 שאילתה 2:
 
 explain analyze select bomb_damage_assessment, count(target_country) from mission
@@ -40,3 +34,5 @@ Execution Time: 0.222 ms
 עם index על airborne_aircraft:
 Planning Time: 2.015 ms
 Execution Time: 12.331 ms
+
+בגלל שמדובר בפילטור של נתנותים השתמשתי בindex דיפןלטיבי שמייצר עץ בינארי מה שמועיל מאוד לחיפוש לפי פילטור
