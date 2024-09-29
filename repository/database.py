@@ -52,7 +52,7 @@ def create_tables():
 
 
 def insert_data_from_unnormalized():
-    with session_factory() as session:
+    with session_factory() as  session:
         session.execute(text("""insert into countries (name)
             select distinct target_country
             FROM mission
@@ -116,3 +116,4 @@ def insert_data_from_unnormalized():
             join target_industry ti on ti.industry = m.target_industry
             join priority p on m.target_priority = p.priority
            """))
+        session.commit()
